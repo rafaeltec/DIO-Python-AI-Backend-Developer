@@ -8,6 +8,8 @@ conexao = sqlite3.connect(ROOT_PATH / 'meu_banco.db')
 # Criando um cursor para interagir com o banco de dados
 cursor = conexao.cursor()
 
+cursor.row_factory = sqlite3.Row
+
 # Função para criar a tabela "clientes"
 def criar_tabela(conexao, cursor):
     cursor.execute('''
@@ -93,7 +95,14 @@ def recuperar_cliente(cursor, id):
     cursor.execute("SELECT * FROM clientes WHERE id=?", (id,))
     return cursor.fetchone()
 
-cliente = recuperar_cliente(cursor,1)
-print(cliente)
+cliente = recuperar_cliente(cursor,2)
+print(dict(cliente))
+
+def listar_clientes(cursor):
+    return cursor.execute("SELECT * FROM clientes ORDER BY nome DESC;")
+
+clientes = listar_clientes(cursor)
+for clientes in clientes: 
+ print(dict(cliente))
 
 
