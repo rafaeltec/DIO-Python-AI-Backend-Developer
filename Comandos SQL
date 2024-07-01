@@ -1,0 +1,4 @@
+select * from clientes limit 10;
+select * from clientes order by nome;
+select * from clientes group by email;
+
