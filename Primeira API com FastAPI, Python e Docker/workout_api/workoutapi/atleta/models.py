@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlalchemy import Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from workoutapi.categorias.models import CategoriaModel
 from workoutapi.contrib.models import BaseModel
 
 
@@ -14,3 +15,5 @@ class AtletaMode(BaseModel):
     altura:Mapped[int] = mapped_column(Integer, nullable=False)
     sexo:Mapped[int] = mapped_column(String(1), nullable=False) 
     created_at: Mapped[datetime] = mapped_column(datetime, nullable=False)
+    categoria: Mapped['CategoriaModel'] = relationship(back_populates='atleta')
+    categoria_id = Mapped[int] = mapped_column(F) 

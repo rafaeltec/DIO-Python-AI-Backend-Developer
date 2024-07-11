@@ -1,5 +1,6 @@
 from typing import Annotated
-from pydantic import BaseModel, Field, PositiveFloat
+from pydantic import Field, PositiveFloat
+from workoutapi.contrib.models import BaseModel
 
 class Atleta(BaseModel):
     nome: Annotated[str,Field(description='Nome do atleta', examples='João', max_lennght=50)]
@@ -7,4 +8,4 @@ class Atleta(BaseModel):
     idade: Annotated[int,Field(description='Idade do atleta', examples=25)]
     peso: Annotated[PositiveFloat, Field(description='Peso do atleta', examples=75.5)]
     altura: Annotated[int,Field(description='Altura do atleta', examples=1.70)]
-    sexo: Annotated[str,Field(description='Sexo do atleta', examples=1)]
+    sexo: Annotated[str,Field(description='Sexo do atleta', examples='M', max_length=1)]

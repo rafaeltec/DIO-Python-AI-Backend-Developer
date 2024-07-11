@@ -1,2 +1,2 @@
 run:
-    @ uvicorn workoutapi.main:app --reload 
+    @uvicorn workoutapi.main:app --reload 
